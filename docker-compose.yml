@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  comparador:
+    build: .
+    container_name: build-poliza
+    ports:
+      - "7501:7501" # Puerto 7501 en host, mapeado al 8501 del contenedor
+    env_file:
+      - .env
+    restart: unless-stopped
