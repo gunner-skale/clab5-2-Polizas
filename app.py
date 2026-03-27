@@ -26,7 +26,7 @@ load_dotenv()
 # CONFIGURACIÓN
 # ============================================
 st.set_page_config(
-    page_title="Estructurador de Pólizas como Excel",
+    page_title="Transcripción Inteligente de Pólizas",
     page_icon="📋",
     layout="wide"
 )
@@ -414,7 +414,7 @@ def crear_excel_estructurado(datos_por_pdf):
 # ============================================
 
 def main():
-    st.markdown('<div class="main-header">📋 Estructurador de Pólizas como Excel</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">📋 Comparador Inteligente de Pólizas Antiguas y Nuevas</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-header">Extrae el contenido completo de pólizas PDF al formato Excel exacto</div>', unsafe_allow_html=True)
 
     # Verificar API Key
