@@ -49,8 +49,32 @@ st.markdown("""
     .success-box { padding: 1rem; background-color: #d4edda; border-left: 5px solid #28a745; margin: 1rem 0; }
     .warning-box { padding: 1rem; background-color: #fff3cd; border-left: 5px solid #ffc107; margin: 1rem 0; }
     .error-box { padding: 1rem; background-color: #f8d7da; border-left: 5px solid #dc3545; margin: 1rem 0; }
+    .logo-corner{position:fixed;top:12px;left:60px;z-index:9999;pointer-events:none}
+    .logo-corner img{pointer-events:auto;max-width:100px;max-height:45px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,0.15);object-fit:contain}
+    .main .block-container{padding-top:2.5rem!important}
 </style>
 """, unsafe_allow_html=True)
+
+
+def _logo_integrado():
+    """Logo integrado en header de Streamlit - VERSIÓN FINAL"""
+    try:
+        with open("logoCL1.jpeg", "rb") as f:
+            import base64
+            b64 = base64.b64encode(f.read()).decode()
+
+            # Crear header con logo y título en columnas
+            col_logo, col_titulo = st.columns([0.1, 0.9])
+
+            with col_logo:
+                st.markdown(f'''
+                    <div style="text-align: center; margin-top: 10px;">
+                        <img src="data:image/jpeg;base64,{b64}" style="max-width: 100px; max-height: 75px; border-radius: 4px;">
+                    </div>
+                ''', unsafe_allow_html=True)
+
+    except Exception as e:
+        print(f"❌ Error logo: {e}")
 
 # ============================================
 # FUNCIÓN PARA OBTENER TOTAL DE PÁGINAS
@@ -414,7 +438,8 @@ def crear_excel_estructurado(datos_por_pdf):
 # ============================================
 
 def main():
-    st.markdown('<div class="main-header">📋 Comparador Inteligente de Pólizas Antiguas y Nuevas</div>', unsafe_allow_html=True)
+    _logo_integrado()
+    st.markdown('<div class="main-header">Comparador Inteligente de Pólizas Antiguas y Nuevas</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-header">Extrae el contenido completo de pólizas PDF al formato Excel exacto</div>', unsafe_allow_html=True)
 
     # Verificar API Key
